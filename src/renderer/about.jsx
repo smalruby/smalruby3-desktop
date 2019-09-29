@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {productName, version} from '../../package.json';
 
-import logo from '../icon/ScratchDesktop.svg';
+import logo from '../icon/Smalruby3Desktop.svg';
 
 // TODO: localization?
 const AboutElement = () => (

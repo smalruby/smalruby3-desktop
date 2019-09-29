@@ -5,7 +5,7 @@ appId: jp.smalruby.smalruby3-desktop
 productName: "Smalruby3 Desktop"
 mac:
   category: public.app-category.education
-  icon: buildResources/ScratchDesktop.icns
+  icon: buildResources/Smalruby3Desktop.icns
   provisioningProfile: embedded.provisionprofile
   target:
     - dmg
@@ -14,9 +14,9 @@ mas:
   type: distribution
   category: public.app-category.education
   entitlements: buildResources/entitlements.plist
-  icon: buildResources/ScratchDesktop.icns
+  icon: buildResources/Smalruby3Desktop.icns
 win:
-  icon: buildResources/ScratchDesktop.ico
+  icon: buildResources/Smalruby3Desktop.ico
   target:
     - appx
     - nsis
