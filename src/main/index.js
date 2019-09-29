@@ -2,10 +2,8 @@ import {BrowserWindow, Menu, app, dialog, ipcMain} from 'electron';
 import * as path from 'path';
 import {format as formatUrl} from 'url';
 import {getFilterForExtension} from './FileFilters';
-import telemetry from './ScratchDesktopTelemetry';
 import MacOSMenu from './MacOSMenu';
 
-telemetry.appWasOpened();
 
 
 // const defaultSize = {width: 1096, height: 715}; // minimum
@@ -20,6 +18,9 @@ const createWindow = ({search = null, url = 'index.html', ...browserWindowOption
     const window = new BrowserWindow({
         useContentSize: true,
         show: false,
+        webPreferences: {
+            preload: path.resolve(path.join(__static, 'javascripts/setup-opal.js'))
+        },
         ...browserWindowOptions
     });
     const webContents = window.webContents;
@@ -68,7 +69,7 @@ const createAboutWindow = () => {
         height: 400,
         parent: _windows.main,
         search: 'route=about',
-        title: 'About Scratch Desktop'
+        title: 'About Smalruby3 Desktop'
     });
     return window;
 };
@@ -85,7 +86,7 @@ const createMainWindow = () => {
     const window = createWindow({
         width: defaultSize.width,
         height: defaultSize.height,
-        title: 'Scratch Desktop'
+        title: 'Smalruby3 Desktop'
     });
     const webContents = window.webContents;
 
@@ -107,24 +108,16 @@ const createMainWindow = () => {
             if (isProjectSave) {
                 const newProjectTitle = path.basename(userChosenPath, extName);
                 webContents.send('setTitleFromSave', {title: newProjectTitle});
-
-                // "setTitleFromSave" will set the project title but GUI has already reported the telemetry event
-                // using the old title. This call lets the telemetry client know that the save was actually completed
-                // and the event should be committed to the event queue with this new title.
-                telemetry.projectSaveCompleted(newProjectTitle);
             }
         } else {
             item.cancel();
-            if (isProjectSave) {
-                telemetry.projectSaveCanceled();
-            }
         }
     });
 
     webContents.on('will-prevent-unload', ev => {
         const choice = dialog.showMessageBox(window, {
             type: 'question',
-            message: 'Leave Scratch?',
+            message: 'Leave Smalruby3?',
             detail: 'Any unsaved changes will be lost.',
             buttons: ['Stay', 'Leave'],
             cancelId: 0, // closing the dialog means "stay"
@@ -151,10 +144,6 @@ if (process.platform === 'darwin') {
 // quit application when all windows are closed
 app.on('window-all-closed', () => {
     app.quit();
-});
-
-app.on('will-quit', () => {
-    telemetry.appWillClose();
 });
 
 // create main BrowserWindow when electron is ready

@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {compose} from 'redux';
-import GUI, {AppStateHOC, TitledHOC} from 'scratch-gui';
+import GUI, {AppStateHOC, TitledHOC} from 'smalruby3-gui';
 
 import ElectronStorageHelper from '../common/ElectronStorageHelper';
 
@@ -32,11 +32,8 @@ const ScratchDesktopHOC = function (WrappedComponent) {
         constructor (props) {
             super(props);
             bindAll(this, [
-                'handleProjectTelemetryEvent',
                 'handleSetTitleFromSave',
-                'handleStorageInit',
-                'handleTelemetryModalOptIn',
-                'handleTelemetryModalOptOut'
+                'handleStorageInit'
             ]);
         }
         componentDidMount () {
@@ -48,32 +45,18 @@ const ScratchDesktopHOC = function (WrappedComponent) {
         handleClickLogo () {
             ipcRenderer.send('open-about-window');
         }
-        handleProjectTelemetryEvent (event, metadata) {
-            ipcRenderer.send(event, metadata);
-        }
         handleSetTitleFromSave (event, args) {
             this.props.onUpdateProjectTitle(args.title);
         }
         handleStorageInit (storageInstance) {
             storageInstance.addHelper(new ElectronStorageHelper(storageInstance));
         }
-        handleTelemetryModalOptIn () {
-            ipcRenderer.send('setTelemetryDidOptIn', true);
-        }
-        handleTelemetryModalOptOut () {
-            ipcRenderer.send('setTelemetryDidOptIn', false);
-        }
         render () {
-            const shouldShowTelemetryModal = (typeof ipcRenderer.sendSync('getTelemetryDidOptIn') !== 'boolean');
             return (<WrappedComponent
                 isScratchDesktop
                 projectId={defaultProjectId}
-                showTelemetryModal={shouldShowTelemetryModal}
                 onClickLogo={this.handleClickLogo}
-                onProjectTelemetryEvent={this.handleProjectTelemetryEvent}
                 onStorageInit={this.handleStorageInit}
-                onTelemetryModalOptIn={this.handleTelemetryModalOptIn}
-                onTelemetryModalOptOut={this.handleTelemetryModalOptOut}
                 {...this.props}
             />);
         }

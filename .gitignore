@@ -21,6 +21,7 @@ npm-*
 
 # don't store the assets downloaded with the `fetch` script
 /static/assets/
+/static/javascripts/setup-opal.js
 
 # generated translation files
 /translations
