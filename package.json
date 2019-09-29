@@ -12,7 +12,7 @@
     "clean": "rimraf ./dist/ ./static/assets/",
     "compile": "rimraf ./dist/ && electron-webpack --bail --display-error-details --env.minify=false",
     "fetch": "rimraf ./static/assets/ && mkdirp ./static/assets/ && node ./scripts/fetchMediaLibraryAssets.js && npm run fetch:setup-opal",
-    "fetch:setup-opal": "rimraf ./static/javascripts && mkdirp ./static/javascripts && cp ./node_modules/smalruby3-gui/static/javascripts/setup-opal.js ./static/javascripts/setup-opal.js",
+    "fetch:setup-opal": "rimraf ./static/javascripts && mkdirp ./static/javascripts && cp-cli ./node_modules/smalruby3-gui/static/javascripts/setup-opal.js ./static/javascripts/setup-opal.js",
     "dist": "npm run build-gui && npm run fetch && npm run compile -p && electron-builder",
     "dist:dir": "npm run dist -- --dir -c.compression=store -c.mac.identity=null",
     "lint": "eslint --cache --color --ext .jsx,.js ."
@@ -36,6 +36,7 @@
     "babel-loader": "^8.0.6",
     "babel-plugin-react-intl": "^2.3.1",
     "copy-webpack-plugin": "^4.6.0",
+    "cp-cli": "^2.0.0",
     "electron": "^4.2.9",
     "electron-builder": "^20.44.4",
     "electron-devtools-installer": "^2.2.4",
