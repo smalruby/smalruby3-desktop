@@ -16,7 +16,7 @@ const env = {
 const child = childProcess.spawnSync(
     'npm', args,
     {
-        cwd: path.join('node_modules', 'scratch-gui'),
+        cwd: path.join('node_modules', 'smalruby3-gui'),
         env,
         shell: true,
         stdio: 'inherit'

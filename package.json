@@ -1,9 +1,9 @@
 {
-  "name": "scratch-desktop",
-  "productName": "Scratch Desktop",
-  "description": "Scratch 3.0 as a self-contained desktop application",
-  "author": "Scratch Foundation",
-  "version": "3.6.0",
+  "name": "smalruby3-desktop",
+  "productName": "Smalruby3 Desktop",
+  "description": "Smalruby3 as a self-contained desktop application forked from [LLK/scratch-desktop](https://github.com/LLK/scratch-desktop)",
+  "author": "Ruby Programming Shounendan",
+  "version": "0.1.0",
   "license": "BSD-3-Clause",
   "scripts": {
     "start": "electron-webpack dev --bail --display-error-details --env.minify=false",
@@ -11,14 +11,15 @@
     "watch-gui": "node ./scripts/run-in-gui.js watch",
     "clean": "rimraf ./dist/ ./static/assets/",
     "compile": "rimraf ./dist/ && electron-webpack --bail --display-error-details --env.minify=false",
-    "fetch": "rimraf ./static/assets/ && mkdirp ./static/assets/ && node ./scripts/fetchMediaLibraryAssets.js",
+    "fetch": "rimraf ./static/assets/ && mkdirp ./static/assets/ && node ./scripts/fetchMediaLibraryAssets.js && npm run fetch:setup-opal",
+    "fetch:setup-opal": "rimraf ./static/javascripts && mkdirp ./static/javascripts && cp ./node_modules/smalruby3-gui/static/javascripts/setup-opal.js ./static/javascripts/setup-opal.js",
     "dist": "npm run build-gui && npm run fetch && npm run compile -p && electron-builder",
     "dist:dir": "npm run dist -- --dir -c.compression=store -c.mac.identity=null",
     "lint": "eslint --cache --color --ext .jsx,.js ."
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/LLK/scratch-desktop.git"
+    "url": "git+ssh://git@github.com/smalruby/smalruby3-desktop.git"
   },
   "dependencies": {
     "source-map-support": "^0.5.12"
@@ -55,7 +56,7 @@
     "react-redux": "5.0.7",
     "redux": "3.7.2",
     "rimraf": "^2.7.1",
-    "scratch-gui": "github:LLK/scratch-gui#scratch-desktop",
+    "smalruby3-gui": "github:smalruby/smalruby3-gui#smalruby3-desktop",
     "source-map-loader": "^0.2.4",
     "uglifyjs-webpack-plugin": "^2.1.3",
     "uuid": "^3.3.3",

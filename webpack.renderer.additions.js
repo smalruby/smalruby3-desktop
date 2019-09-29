@@ -12,7 +12,7 @@ module.exports = makeConfig({
     ],
     plugins: [
         new CopyWebpackPlugin([{
-            from: path.resolve(__dirname, 'node_modules', 'scratch-gui', 'dist', 'static'),
+            from: path.resolve(__dirname, 'node_modules', 'smalruby3-gui', 'dist', 'static'),
             to: 'static'
         }])
     ]

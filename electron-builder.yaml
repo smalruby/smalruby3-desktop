@@ -1,8 +1,8 @@
 directories:
   buildResources: buildResources
   output: dist
-appId: edu.mit.scratch.scratch-desktop
-productName: "Scratch Desktop"
+appId: jp.smalruby.smalruby3-desktop
+productName: "Smalruby3 Desktop"
 mac:
   category: public.app-category.education
   icon: buildResources/ScratchDesktop.icns
@@ -21,8 +21,8 @@ win:
     - appx
     - nsis
 appx:
-  identityName: ScratchFoundation.ScratchDesktop
-  publisherDisplayName: "Scratch Foundation"
-  publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
+  identityName: RubyProgrammingShounendan.Smalruby3Desktop
+  publisherDisplayName: "Ruby Programming Shounendan"
+  publisher: "CN=12345678-1234-1234-1234-123456789012"
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
