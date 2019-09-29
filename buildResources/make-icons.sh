@@ -1,8 +1,8 @@
 #!/bin/bash
-SRC=../src/icon/ScratchDesktop.svg
-OUT_ICONSET=ScratchDesktop.iconset
-OUT_ICNS=ScratchDesktop.icns
-OUT_ICO=ScratchDesktop.ico
+SRC=../src/icon/Smalruby3Desktop.svg
+OUT_ICONSET=Smalruby3Desktop.iconset
+OUT_ICNS=Smalruby3Desktop.icns
+OUT_ICO=Smalruby3Desktop.ico
 TMP_ICO=tmp
 
 ICO_BASIC_SIZES="16 24 32 48 256"
