@@ -101,7 +101,7 @@ configuration like this:
                 "skipFiles": [
                     // it seems like skipFiles only reliably works with 1 entry :(
                     //"<node_internals>/**",
-                    "${workspaceFolder:scratch-desktop}/node_modules/electron/dist/resources/*.asar/**"
+                    "${workspaceFolder:smalruby3-desktop}/node_modules/electron/dist/resources/*.asar/**"
                 ],
                 "sourceMaps": true,
                 "timeout": 30000,
