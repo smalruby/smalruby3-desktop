@@ -2,6 +2,14 @@
 
 Smalruby3 as a standalone desktop application forked from [LLK/scratch-desktop](https://github.com/LLK/scratch-desktop).
 
+## Changes from Scratch Desktop
+
+ - Remove the Scratch Cat, Gobo, Pico, Nano, Tera and Giga graphics (sprites and costumes).
+ - Remove TRADEMARK file.
+ - Use [smalruby3-gui](https://github.com/smalruby/smalruby3-gui) instead of [scratch-desktop](https://github.com/LLK/scratch-gui).
+ - Remove telemetry feature, because we don't have a telemetry server.
+ - Preload setup-opal.js to setup [Opal](https://github.com/opal/opal) that is copied from smalruby3-gui/static/javascripts/setup-opal.js.
+
 ## Developer Instructions
 
 ### Prepare `smalruby3-gui`
