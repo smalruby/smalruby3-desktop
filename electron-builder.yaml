@@ -3,8 +3,10 @@ directories:
   output: dist
 appId: jp.smalruby.smalruby3-desktop
 productName: "Smalruby3 Desktop"
+afterSign: "scripts/afterSign.js"
 mac:
   category: public.app-category.education
+  hardenedRuntime: true
   icon: buildResources/Smalruby3Desktop.icns
   provisioningProfile: embedded.provisionprofile
   target:
@@ -14,6 +16,7 @@ mas:
   type: distribution
   category: public.app-category.education
   entitlements: buildResources/entitlements.plist
+  entitlementsInherit: buildResources/entitlements.inherit.plist
   icon: buildResources/Smalruby3Desktop.icns
 win:
   icon: buildResources/Smalruby3Desktop.ico

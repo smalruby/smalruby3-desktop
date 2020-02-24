@@ -33,8 +33,12 @@ const ScratchDesktopHOC = function (WrappedComponent) {
             super(props);
             bindAll(this, [
                 'handleSetTitleFromSave',
-                'handleStorageInit'
+                'handleStorageInit',
+                'handleUpdateProjectTitle'
             ]);
+            this.state = {
+                projectTitle: null
+            };
         }
         componentDidMount () {
             ipcRenderer.on('setTitleFromSave', this.handleSetTitleFromSave);
@@ -46,25 +50,27 @@ const ScratchDesktopHOC = function (WrappedComponent) {
             ipcRenderer.send('open-about-window');
         }
         handleSetTitleFromSave (event, args) {
-            this.props.onUpdateProjectTitle(args.title);
+            this.handleUpdateProjectTitle(args.title);
         }
         handleStorageInit (storageInstance) {
             storageInstance.addHelper(new ElectronStorageHelper(storageInstance));
         }
+        handleUpdateProjectTitle (newTitle) {
+            this.setState({projectTitle: newTitle});
+        }
         render () {
             return (<WrappedComponent
+                canEditTitle
                 isScratchDesktop
                 projectId={defaultProjectId}
+                projectTitle={this.state.projectTitle}
                 onClickLogo={this.handleClickLogo}
                 onStorageInit={this.handleStorageInit}
+                onUpdateProjectTitle={this.handleUpdateProjectTitle}
                 {...this.props}
             />);
         }
     }
-
-    ScratchDesktopComponent.propTypes = {
-        onUpdateProjectTitle: PropTypes.func
-    };
 
     return ScratchDesktopComponent;
 };
@@ -73,9 +79,8 @@ const ScratchDesktopHOC = function (WrappedComponent) {
 // the hierarchy of HOC constructor calls clearer here; it has nothing to do with redux's
 // ability to compose reducers.
 const WrappedGui = compose(
-    AppStateHOC,
-    TitledHOC,
-    ScratchDesktopHOC // must come after `TitledHOC` so it has access to `onUpdateProjectTitle`
+    ScratchDesktopHOC,
+    AppStateHOC
 )(GUI);
 
 ReactDOM.render(<WrappedGui />, appTarget);
