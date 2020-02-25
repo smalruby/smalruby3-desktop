@@ -2,7 +2,7 @@ const {notarize} = require('electron-notarize');
 
 const notarizeMacBuild = async function (context) {
     // keep this in sync with appId in the electron-builder config
-    const appId = 'edu.mit.scratch.scratch-desktop';
+    const appId = 'jp.smalruby.smalruby3-desktop';
 
     if (!process.env.AC_USERNAME) {
         throw new Error(
@@ -34,7 +34,6 @@ const afterSign = async function (context) {
     case 'mas': // macOS build for Mac App Store
         break;
     case 'darwin': // macOS build NOT for Mac App Store
-        await notarizeMacBuild(context);
         break;
     }
 };
