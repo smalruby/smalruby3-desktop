@@ -77,6 +77,7 @@ const createMainWindow = () => {
         height: defaultSize.height,
         title: 'Smalruby3 Desktop'
     });
+    window.maximize();
     const webContents = window.webContents;
 
     webContents.session.on('will-download', (ev, item) => {
