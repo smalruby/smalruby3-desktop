@@ -9,6 +9,9 @@ Smalruby3 as a standalone desktop application forked from [LLK/scratch-desktop](
  - Use [smalruby3-gui](https://github.com/smalruby/smalruby3-gui) instead of [scratch-desktop](https://github.com/LLK/scratch-gui).
  - Remove telemetry feature, because we don't have a telemetry server.
  - Preload setup-opal.js to setup [Opal](https://github.com/opal/opal) that is copied from smalruby3-gui/static/javascripts/setup-opal.js.
+ - Set WebRTC IPHandlingPolicy to `default`.
+ - Bump up electron version 9.0.0.
+ 
 
 ## Developer Instructions
 
