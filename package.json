@@ -3,7 +3,7 @@
   "productName": "Smalruby3 Desktop",
   "description": "Smalruby3 as a self-contained desktop application forked from [LLK/scratch-desktop](https://github.com/LLK/scratch-desktop)",
   "author": "Ruby Programming Shounendan",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "license": "BSD-3-Clause",
   "scripts": {
     "start": "electron-webpack dev --bail --display-error-details --env.minify=false",
