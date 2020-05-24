@@ -27,9 +27,11 @@ necessary for Scratch Desktop to function correctly but are not yet merged into 
    3. `git clone https://github.com/smalruby/smalruby3-gui.git`
 2. `cd smalruby3-gui`
    1. `git checkout smalruby3-desktop`
-   2. `npm install`
-   3. `npm link`
-   4. `cd ..`
+   2. `rm -rf node_modules/scratch-vm`
+   3. `npm install`
+   4. `(cd node_modules/scratch-vm && npm --production=false install && $(npm bin)/webpack --colors --bail --silent)`
+   5. `npm link`
+   6. `cd ..`
 3. `cd smalruby3-desktop`
    1. `npm install`
    2. `npm link smalruby3-gui`
