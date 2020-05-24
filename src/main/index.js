@@ -239,6 +239,8 @@ const createMainWindow = () => {
     return window;
 };
 
+app.commandLine.appendSwitch('enable-experimental-web-platform-features');
+
 if (process.platform === 'darwin') {
     const osxMenu = Menu.buildFromTemplate(MacOSMenu(app));
     Menu.setApplicationMenu(osxMenu);
