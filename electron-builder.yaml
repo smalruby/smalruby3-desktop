@@ -6,17 +6,24 @@ productName: "Smalruby3 Desktop"
 afterSign: "scripts/afterSign.js"
 mac:
   category: public.app-category.education
+  entitlements: buildResources/entitlements.mac.plist
+  extendInfo:
+    NSCameraUsageDescription: >-
+        This app requires camera access when taking a photo in the paint editor or using the video sensing blocks.
+    NSMicrophoneUsageDescription: >-
+        This app requires microphone access when recording sounds or detecting loudness.
+  gatekeeperAssess: true
   hardenedRuntime: true
   icon: buildResources/Smalruby3Desktop.icns
   provisioningProfile: embedded.provisionprofile
   target:
     - dmg
     - mas
-mas:
   type: distribution
+mas:
   category: public.app-category.education
-  entitlements: buildResources/entitlements.plist
-  entitlementsInherit: buildResources/entitlements.inherit.plist
+  entitlements: buildResources/entitlements.mas.plist
+  entitlementsInherit: buildResources/entitlements.mas.inherit.plist
   icon: buildResources/Smalruby3Desktop.icns
 win:
   icon: buildResources/Smalruby3Desktop.ico
