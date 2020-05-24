@@ -150,6 +150,8 @@ const createWindow = ({search = null, url = 'index.html', ...browserWindowOption
 
     webContents.session.setPermissionRequestHandler(handlePermissionRequest);
 
+    webContents.setWebRTCIPHandlingPolicy('default');
+
     if (isDevelopment) {
         webContents.openDevTools({mode: 'detach', activate: true});
     }
