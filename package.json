@@ -37,7 +37,7 @@
     "babel-plugin-react-intl": "^2.3.1",
     "copy-webpack-plugin": "^4.6.0",
     "cp-cli": "^2.0.0",
-    "electron": "^6.1.8",
+    "electron": "^6.1.12",
     "electron-builder": "^22.3.2",
     "electron-devtools-installer": "^2.2.4",
     "electron-notarize": "^0.2.1",
